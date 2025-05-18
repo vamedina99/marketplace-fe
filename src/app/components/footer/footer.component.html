@@ -1,0 +1,35 @@
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3 class="footer-title">Mi Tienda</h3>
+      <p class="footer-text">Tu tienda en línea de confianza para todas tus necesidades.</p>
+    </div>
+    
+    <div class="footer-section">
+      <h3 class="footer-title">Enlaces Rápidos</h3>
+      <ul class="footer-links">
+        <li><a routerLink="/">Inicio</a></li>
+        <li><a routerLink="/cart">Carrito</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h3 class="footer-title">Categorías</h3>
+      <ul class="footer-links">
+        <li><a routerLink="/" [queryParams]="{category: 'Electrónicos'}">Electrónicos</a></li>
+        <li><a routerLink="/" [queryParams]="{category: 'Deportes'}">Deportes</a></li>
+        <li><a routerLink="/" [queryParams]="{category: 'Hogar'}">Hogar</a></li>
+        <li><a routerLink="/" [queryParams]="{category: 'Moda'}">Moda</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h3 class="footer-title">Contacto</h3>
+      <p class="footer-text">Email: info&#64;mitienda.com</p>
+      <p class="footer-text">Teléfono: (601) 123-4567</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; {{ currentYear }} Mi Tienda. Todos los derechos reservados.</p>
+  </div>
+</footer>

@@ -1,0 +1,222 @@
+<div class="checkout-container animate-fadeIn">
+  <h1 class="page-title">Checkout</h1>
+  
+  <div class="checkout-steps">
+    <div class="step" [class.active]="currentStep === 1" [class.completed]="currentStep > 1">
+      <div class="step-number">1</div>
+      <div class="step-text">Customer Information</div>
+    </div>
+    <div class="step-connector"></div>
+    <div class="step" [class.active]="currentStep === 2">
+      <div class="step-number">2</div>
+      <div class="step-text">Payment</div>
+    </div>
+  </div>
+  
+  <div class="checkout-content">
+    <div class="checkout-main">
+      <!-- Step 1: Customer Information -->
+      <div *ngIf="currentStep === 1" class="checkout-form animate-fadeIn">
+        <h2 class="form-title">Customer Information</h2>
+        
+        <form [formGroup]="customerForm" (ngSubmit)="nextStep()">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                formControlName="name" 
+                [class.invalid]="customerForm.get('name')?.invalid && customerForm.get('name')?.touched"
+              >
+              <div class="error-message" *ngIf="customerForm.get('name')?.invalid && customerForm.get('name')?.touched">
+                Please enter your full name
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input 
+                type="email" 
+                id="email" 
+                formControlName="email"
+                [class.invalid]="customerForm.get('email')?.invalid && customerForm.get('email')?.touched"
+              >
+              <div class="error-message" *ngIf="customerForm.get('email')?.invalid && customerForm.get('email')?.touched">
+                Please enter a valid email address
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input 
+              type="text" 
+              id="address" 
+              formControlName="address"
+              [class.invalid]="customerForm.get('address')?.invalid && customerForm.get('address')?.touched"
+            >
+            <div class="error-message" *ngIf="customerForm.get('address')?.invalid && customerForm.get('address')?.touched">
+              Please enter your address
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city">City</label>
+              <input 
+                type="text" 
+                id="city" 
+                formControlName="city"
+                [class.invalid]="customerForm.get('city')?.invalid && customerForm.get('city')?.touched"
+              >
+              <div class="error-message" *ngIf="customerForm.get('city')?.invalid && customerForm.get('city')?.touched">
+                Please enter your city
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="postalCode">Postal Code</label>
+              <input 
+                type="text" 
+                id="postalCode" 
+                formControlName="postalCode"
+                [class.invalid]="customerForm.get('postalCode')?.invalid && customerForm.get('postalCode')?.touched"
+              >
+              <div class="error-message" *ngIf="customerForm.get('postalCode')?.invalid && customerForm.get('postalCode')?.touched">
+                Please enter your postal code
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="country">Country</label>
+              <input 
+                type="text" 
+                id="country" 
+                formControlName="country"
+                [class.invalid]="customerForm.get('country')?.invalid && customerForm.get('country')?.touched"
+              >
+              <div class="error-message" *ngIf="customerForm.get('country')?.invalid && customerForm.get('country')?.touched">
+                Please enter your country
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-actions">
+            <button type="submit" class="btn-primary" [disabled]="customerForm.invalid">
+              Continue to Payment
+            </button>
+          </div>
+        </form>
+      </div>
+      
+      <!-- Step 2: Payment Information -->
+      <div *ngIf="currentStep === 2" class="checkout-form animate-fadeIn">
+        <h2 class="form-title">Payment Information</h2>
+        
+        <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="cardNumber">Card Number</label>
+            <input 
+              type="text" 
+              id="cardNumber" 
+              formControlName="cardNumber"
+              placeholder="1234567890123456"
+              [class.invalid]="paymentForm.get('cardNumber')?.invalid && paymentForm.get('cardNumber')?.touched"
+            >
+            <div class="error-message" *ngIf="paymentForm.get('cardNumber')?.invalid && paymentForm.get('cardNumber')?.touched">
+              Please enter a valid 16-digit card number
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="cardHolder">Card Holder Name</label>
+            <input 
+              type="text" 
+              id="cardHolder" 
+              formControlName="cardHolder"
+              [class.invalid]="paymentForm.get('cardHolder')?.invalid && paymentForm.get('cardHolder')?.touched"
+            >
+            <div class="error-message" *ngIf="paymentForm.get('cardHolder')?.invalid && paymentForm.get('cardHolder')?.touched">
+              Please enter the card holder name
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="expiryDate">Expiry Date (MM/YY)</label>
+              <input 
+                type="text" 
+                id="expiryDate" 
+                formControlName="expiryDate"
+                placeholder="MM/YY"
+                [class.invalid]="paymentForm.get('expiryDate')?.invalid && paymentForm.get('expiryDate')?.touched"
+              >
+              <div class="error-message" *ngIf="paymentForm.get('expiryDate')?.invalid && paymentForm.get('expiryDate')?.touched">
+                Please enter a valid expiry date (MM/YY)
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="cvv">CVV</label>
+              <input 
+                type="text" 
+                id="cvv" 
+                formControlName="cvv"
+                [class.invalid]="paymentForm.get('cvv')?.invalid && paymentForm.get('cvv')?.touched"
+              >
+              <div class="error-message" *ngIf="paymentForm.get('cvv')?.invalid && paymentForm.get('cvv')?.touched">
+                Please enter a valid CVV
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-actions">
+            <button type="button" class="btn-secondary" (click)="prevStep()">
+              Back
+            </button>
+            <button 
+              type="submit" 
+              class="btn-primary" 
+              [disabled]="paymentForm.invalid || isSubmitting">
+              {{ isSubmitting ? 'Processing...' : 'Complete Order' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <div class="checkout-summary">
+      <h2 class="summary-title">Order Summary</h2>
+      
+      <div class="summary-items">
+        <div *ngFor="let item of cartItems" class="summary-item">
+          <div class="item-info">
+            <span class="item-quantity">{{ item.quantity }}×</span>
+            <span class="item-name">{{ item.product.name }}</span>
+          </div>
+          <span class="item-price">${{ getItemTotal(item).toFixed(2) }}</span>
+        </div>
+      </div>
+      
+      <div class="summary-divider"></div>
+      
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span>${{ cartTotal.toFixed(2) }}</span>
+      </div>
+      
+      <div class="summary-row">
+        <span>Shipping</span>
+        <span>Free</span>
+      </div>
+      
+      <div class="summary-divider"></div>
+      
+      <div class="summary-row total">
+        <span>Total</span>
+        <span>${{ cartTotal.toFixed(2) }}</span>
+      </div>
+    </div>
+  </div>
+</div>

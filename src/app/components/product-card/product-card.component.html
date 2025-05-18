@@ -1,0 +1,29 @@
+<div class="product-card" (click)="viewProduct()">
+  <div class="product-image-container">
+    <img [src]="product.imageUrl" [alt]="product.name" class="product-image">
+    <span class="product-badge" *ngIf="!product.inStock">Agotado</span>
+  </div>
+  
+  <div class="product-info">
+    <h3 class="product-name">{{ product.name }}</h3>
+    
+    <div class="product-rating">
+      <span *ngFor="let star of stars" class="star">
+        <span *ngIf="star === 1">★</span>
+        <span *ngIf="star === 0.5">✮</span>
+        <span *ngIf="star === 0">☆</span>
+      </span>
+      <span class="rating-value">{{ product.rating.toFixed(1) }}</span>
+    </div>
+    
+    <div class="product-category">{{ product.category }}</div>
+    <div class="product-price">{{ product.price | currency:'COP':'symbol-narrow':'1.0-0' }}</div>
+    
+    <button 
+      class="add-to-cart-btn" 
+      (click)="onAddToCart($event)" 
+      [disabled]="!product.inStock">
+      {{ product.inStock ? 'Agregar al Carrito' : 'Agotado' }}
+    </button>
+  </div>
+</div>
