@@ -1,13 +1,13 @@
 <div class="home-container">
   <div class="hero-section">
     <div class="hero-content">
-      <h1 class="hero-title">Descubre Productos de Calidad</h1>
-      <p class="hero-subtitle">La mejor tienda en línea para todas tus necesidades</p>
+      <h1 class="hero-title">Dale la ultima oportunidad a la comida</h1>
+      <p class="hero-subtitle">Salva comida, salva al planeta</p>
       <div class="search-container">
-        <input 
-          type="text" 
-          class="search-input" 
-          placeholder="Buscar productos..." 
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Buscar productos..."
           [(ngModel)]="searchQuery"
           (input)="onSearchInputChange()"
         >
@@ -19,9 +19,9 @@
   <div class="categories-container">
     <h2 class="section-title">Categorías</h2>
     <div class="categories-list">
-      <button 
-        *ngFor="let category of categories" 
-        class="category-button" 
+      <button
+        *ngFor="let category of categories"
+        class="category-button"
         [class.active]="category === selectedCategory"
         (click)="onCategoryChange(category)">
         {{ category }}
@@ -31,16 +31,16 @@
 
   <div class="products-container">
     <h2 class="section-title">{{ selectedCategory === 'Todos' ? 'Todos los Productos' : selectedCategory }}</h2>
-    
+
     <div *ngIf="isLoading" class="loading-spinner">
       <div class="spinner"></div>
       <p>Cargando productos...</p>
     </div>
-    
+
     <div *ngIf="!isLoading && products.length === 0" class="no-products">
       <p>No se encontraron productos.</p>
     </div>
-    
+
     <div *ngIf="!isLoading && products.length > 0" class="products-grid">
       <app-product-card
         *ngFor="let product of products"
