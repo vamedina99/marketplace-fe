@@ -9,97 +9,73 @@ export class ProductService {
   private products: Product[] = [
     {
       id: 1,
-      name: 'Caja de Frutas Frescas',
-      description: 'Caja con frutas frescas rescatadas de excedentes agrícolas locales. Variedad según temporada.',
-      price: 25000,
-      imageUrl: '/assets/images/frutas.jpg',
-      category: 'Alimentos',
+      name: 'Pan de Bono Rescatado',
+      description: 'Pan de bono fresco del día, recuperado de El Kiosko’ Ya. Ideal para el desayuno.',
+      price: 4000,
+      imageUrl: '/assets/images/pandebono.png',
+      category: 'Panadería',
       inStock: true,
-      rating: 4.9,
-      features: ['Frutas de temporada', 'Producto local', 'Frescura garantizada', 'Ideal para snacks saludables']
+      rating: 4.8,
+      features: ['Hecho con queso costeño', 'Producto del día', 'Sin conservantes', 'Origen local']
     },
     {
       id: 2,
-      name: 'Pan Artesanal del Día',
-      description: 'Pan fresco artesanal rescatado de panaderías locales con descuentos para evitar desperdicios.',
-      price: 8000,
-      imageUrl: 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      category: 'Alimentos',
+      name: 'Croissant de Chocolate',
+      description: 'Croissant artesanal con relleno de chocolate, recuperado de Juan Valdez.',
+      price: 6500,
+      imageUrl: '/assets/images/croissant.jpg',
+      category: 'Repostería',
       inStock: true,
-      rating: 4.7,
-      features: ['Pan fresco', 'Artesanal', 'Producto local', 'Descuento especial']
+      rating: 4.6,
+      features: ['Relleno de chocolate', 'Masa hojaldrada', 'Producto de cafetería', 'Rescatado del desperdicio']
     },
     {
       id: 3,
-      name: 'Verduras Orgánicas',
-      description: 'Paquete de verduras orgánicas rescatadas de fincas cercanas, ideales para tus recetas saludables.',
-      price: 18000,
-      imageUrl: 'https://images.pexels.com/photos/5938/food-vegetables-healthy-lunch.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      category: 'Alimentos',
+      name: 'Arepa de Chócolo Empacada',
+      description: 'Arepa dulce de chócolo empacada al vacío, rescatada de Sary.',
+      price: 5000,
+      imageUrl: '/assets/images/arepa-chocolo.png',
+      category: 'Snacks Locales',
       inStock: true,
-      rating: 4.6,
-      features: ['Orgánico', 'Producto local', 'Variedad de verduras', 'Frescas y nutritivas']
+      rating: 4.5,
+      features: ['Empaque al vacío', 'Ideal para calentar', 'Origen colombiano', 'Fácil preparación']
     },
     {
       id: 4,
-      name: 'Café de Origen',
-      description: 'Paquete de café molido de finca colombiana, rescatado antes de su fecha de vencimiento.',
-      price: 12000,
-      imageUrl: 'https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      category: 'Bebidas',
+      name: 'Combo de Panadería Local',
+      description: 'Combo sorpresa de panes del día (mogolla, pan aliñado, pan de queso), recuperado de panaderías del barrio.',
+      price: 6000,
+      imageUrl: '/assets/images/combo.png',
+      category: 'Panadería',
       inStock: true,
-      rating: 4.8,
-      features: ['Café 100% colombiano', 'Molido fresco', 'Sabor intenso', 'Rescatado a tiempo']
+      rating: 4.7,
+      features: ['Panes frescos', 'Hechos artesanalmente', 'Recuperados del día', 'Ideal para compartir']
     },
     {
       id: 5,
-      name: 'Jabón Artesanal Natural',
-      description: 'Jabón hecho a mano con ingredientes naturales, rescatado de excedentes de tiendas locales.',
+      name: 'Caja de 12 donas',
+      description: 'Donas surtidas',
       price: 9000,
-      imageUrl: 'https://images.pexels.com/photos/3775145/pexels-photo-3775145.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      category: 'Cuidado Personal',
+      imageUrl: '/assets/images/dunkin-donuts.png',
+      category: 'Repostería',
       inStock: true,
-      rating: 4.5,
-      features: ['Ingredientes naturales', 'Hecho a mano', 'Respetuoso con el medio ambiente', 'Aroma fresco']
+      rating: 4.7,
+      features: ['Producto típico', 'Congelado', 'Preparación rápida', 'Sabor auténtico']
     },
     {
       id: 6,
-      name: 'Snack Saludable',
-      description: 'Snack saludable con frutos secos y semillas, rescatado de tiendas locales para reducir desperdicios.',
-      price: 7000,
-      imageUrl: 'https://images.pexels.com/photos/5938/food-vegetables-healthy-lunch.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      category: 'Alimentos',
+      name: 'Dedo de queso',
+      description: 'Dedo de queso rescatado de panaderías gourmet. Perfecto para media mañana.',
+      price: 4500,
+      imageUrl: '/assets/images/punto-caliente.jpg',
+      category: 'Repostería',
       inStock: false,
-      rating: 4.3,
-      features: ['Frutos secos', 'Sin aditivos', 'Energía natural', 'Empaque eco-friendly']
-    },
-    {
-      id: 7,
-      name: 'Botella Reutilizable',
-      description: 'Botella de agua reutilizable, rescatada de excedentes de producción, ideal para uso diario.',
-      price: 35000,
-      imageUrl: 'https://images.pexels.com/photos/4052143/pexels-photo-4052143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      category: 'Hogar y Vida',
-      inStock: true,
-      rating: 4.6,
-      features: ['Material BPA free', 'Capacidad 750 ml', 'Diseño ergonómico', 'Resistente y duradera']
-    },
-    {
-      id: 8,
-      name: 'Kit de Plantas Aromáticas',
-      description: 'Kit con semillas y macetas para cultivar tus propias plantas aromáticas en casa.',
-      price: 28000,
-      imageUrl: 'https://images.pexels.com/photos/235621/pexels-photo-235621.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      category: 'Hogar y Vida',
-      inStock: true,
-      rating: 4.7,
-      features: ['Semillas orgánicas', 'Macetas incluidas', 'Fácil de cultivar', 'Mejora tu espacio']
+      rating: 4.4,
+      features: ['Hecho a mano', 'Con ingredientes naturales', 'Ideal para café', 'Aprovechamiento de excedente']
     }
   ];
 
-  private categorySubject = new BehaviorSubject<string[]>(['Todos', 'Alimentos', 'Bebidas', 'Cuidado Personal', 'Hogar y Vida']);
-
-
+  private categorySubject = new BehaviorSubject<string[]>(['Todos', 'Panadería', 'Cafetería', 'Repostería', 'Snacks Locales']);
 
   constructor() { }
 
@@ -120,12 +96,12 @@ export class ProductService {
     if (!query.trim()) {
       return of(this.products);
     }
-    
-    const filteredProducts = this.products.filter(product => 
-      product.name.toLowerCase().includes(query.toLowerCase()) || 
+
+    const filteredProducts = this.products.filter(product =>
+      product.name.toLowerCase().includes(query.toLowerCase()) ||
       product.description.toLowerCase().includes(query.toLowerCase())
     );
-    
+
     return of(filteredProducts);
   }
 
@@ -133,11 +109,11 @@ export class ProductService {
     if (category === 'Todos') {
       return of(this.products);
     }
-    
-    const filteredProducts = this.products.filter(product => 
+
+    const filteredProducts = this.products.filter(product =>
       product.category === category
     );
-    
+
     return of(filteredProducts);
   }
 }
