@@ -12,7 +12,7 @@ export class ProductService {
       name: 'Caja de Frutas Frescas',
       description: 'Caja con frutas frescas rescatadas de excedentes agrícolas locales. Variedad según temporada.',
       price: 25000,
-      imageUrl: 'https://images.pexels.com/photos/257816/pexels-photo-257816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      imageUrl: '/assets/images/frutas.jpg',
       category: 'Alimentos',
       inStock: true,
       rating: 4.9,
