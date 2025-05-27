@@ -19,8 +19,30 @@ export class OrderService {
     }
   }
 
-  createOrder(order: OrderToSend): Observable<Order> {
-    return this.http.post<Order>(`${this.apiUrl}/transactions`, order);
+  createOrder(order: Order): Observable<Order> {
+        // Generate a simple order ID
+    order.id = Date.now().toString();
+    order.date = new Date();
+    order.status = 'pending';
+
+    this.orders.push(order);
+    localStorage.setItem('orders', JSON.stringify(this.orders));
+
+    const newOrder = {
+      amount: order.amount,
+      type: order.type,
+      description: order.description,
+      userId: order.userId,
+      userIp:order.userIp,
+      sourceAccount: order.sourceAccount,
+      destinationAccount: order.destinationAccount,
+      status: order.status,
+      referenceNumber: order.referenceNumber,
+      paymentMethod: order.paymentMethod,
+      currency: order.currency
+    }
+    console.log('newOrder', newOrder)
+    return this.http.post<Order>(`${this.apiUrl}/transactions`, newOrder);
   }
 
   getOrders(): Observable<Order[]> {

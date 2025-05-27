@@ -40,7 +40,13 @@ export interface OrderToSend {
   amount: number;
   type: string;
   description: string;
+
+  userId: string;
+  userIp: string;
   sourceAccount: string;
   destinationAccount: string;
   status: string;
+  referenceNumber:string;
+  paymentMethod:string;
+  currency: string
 }
