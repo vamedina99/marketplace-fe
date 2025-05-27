@@ -8,55 +8,69 @@
     "demo": {
       "architect": {
         "build": {
-          "builder": "@angular/build:application",
-          "configurations": {
-            "development": {
-              "extractLicenses": false,
-              "namedChunks": true,
-              "optimization": false,
-              "sourceMap": true,
-              // 👇 Agregar si usas baseHref solo en dev
-              "baseHref": "./"
-            },
-            "production": {
-              "aot": true,
-              "extractLicenses": true,
-              "namedChunks": false,
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              // ✅ ESTA ES LA CLAVE
-              "baseHref": "./"
-            }
-          },
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "assets": [],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
             "index": "src/index.html",
-            "browser": "src/main.ts",
-            "outputPath": "dist/demo"
+            "main": "src/main.ts",
             "polyfills": ["zone.js"],
             "scripts": [],
             "styles": ["src/global_styles.css"],
-            "tsConfig": "tsconfig.app.json"
+            "tsConfig": "tsconfig.app.json",
+            "outputPath": "dist/demo/browser",
+            "outputHashing": "none",
+            "baseHref": "/demo/",
+            "sourceMap": true,
+            "optimization": false,
+            "extractCss": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "none",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "baseHref": "/demo/"
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": true,
+              "aot": false,
+              "baseHref": "/demo/"
+            }
           }
         },
         "serve": {
-          "builder": "@angular/build:dev-server",
-          "configurations": {
-            "development": {
-              "buildTarget": "demo:build:development"
-            },
-            "production": {
-              "buildTarget": "demo:build:production"
-            }
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "demo:build:development"
           },
-          "defaultConfiguration": "development"
+          "configurations": {
+            "production": {
+              "browserTarget": "demo:build:production"
+            }
+          }
         }
       },
       "prefix": "app",
       "projectType": "application",
       "root": "",
-      "schematics": {},
       "sourceRoot": "src"
     }
   },
