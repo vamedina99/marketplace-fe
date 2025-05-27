@@ -113,18 +113,9 @@ export class CheckoutComponent implements OnInit {
       payment: paymentInfo
     };
 
-    const orderToSend: OrderToSend = {
-      amount: this.cartTotal,
-      type: 'payment',
-      description: 'Payment for order',
-      sourceAccount: '12345',
-      destinationAccount: '67890',
-      status: 'pending',
 
 
-    }
-
-    this.orderService.createOrder(orderToSend).subscribe(createdOrder => {
+    this.orderService.createOrder(order).subscribe(createdOrder => {
       console.log('createdOrder',createdOrder);
       // this.cartService.clearCart();
       // this.router.navigate(['/order-confirmation'], {
