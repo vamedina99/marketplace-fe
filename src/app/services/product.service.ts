@@ -56,7 +56,7 @@ export class ProductService {
       name: 'Caja de 12 donas',
       description: 'Donas surtidas',
       price: 9000,
-      imageUrl: '/assets/images/dunkin-donuts.png',
+      imageUrl: '/assets/images/dunkin-donuts.jpg',
       category: 'Repostería',
       inStock: true,
       rating: 4.7,
