@@ -3,22 +3,22 @@
     <div class="spinner"></div>
     <p>Loading product details...</p>
   </div>
-  
+
   <div *ngIf="!isLoading && product" class="product-detail animate-fadeIn">
     <div class="breadcrumbs">
-      <a routerLink="/">Home</a> &gt; 
-      <a routerLink="/" [queryParams]="{category: product.category}">{{ product.category }}</a> &gt; 
+      <a routerLink="/">Home</a> &gt;
+      <a routerLink="/" [queryParams]="{category: product.category}">{{ product.category }}</a> &gt;
       <span>{{ product.name }}</span>
     </div>
-    
+
     <div class="product-content">
       <div class="product-image-container">
         <img [src]="product.imageUrl" [alt]="product.name" class="product-image">
       </div>
-      
+
       <div class="product-info">
         <h1 class="product-name">{{ product.name }}</h1>
-        
+
         <div class="product-rating">
           <span *ngFor="let star of stars" class="star">
             <span *ngIf="star === 1">★</span>
@@ -27,48 +27,48 @@
           </span>
           <span class="rating-value">{{ product.rating.toFixed(1) }}</span>
         </div>
-        
+
         <div class="product-price">${{ product.price.toFixed(2) }}</div>
-        
+
         <div class="product-status" [class.in-stock]="product.inStock" [class.out-of-stock]="!product.inStock">
-          {{ product.inStock ? 'In Stock' : 'Out of Stock' }}
+          {{ product.inStock ? 'En Stock' : 'Agotado' }}
         </div>
-        
+
         <p class="product-description">{{ product.description }}</p>
-        
+
         <div class="product-features" *ngIf="product.features && product.features.length > 0">
           <h3>Features</h3>
           <ul>
             <li *ngFor="let feature of product.features">{{ feature }}</li>
           </ul>
         </div>
-        
+
         <div class="quantity-selector" *ngIf="product.inStock">
-          <span>Quantity:</span>
+          <span>Cantidad:</span>
           <div class="quantity-controls">
             <button class="quantity-btn" (click)="decreaseQuantity()">-</button>
             <input type="number" class="quantity-input" [(ngModel)]="quantity" min="1">
             <button class="quantity-btn" (click)="increaseQuantity()">+</button>
           </div>
         </div>
-        
+
         <div class="action-buttons">
-          <button 
-            class="add-to-cart-btn" 
-            (click)="addToCart()" 
+          <button
+            class="add-to-cart-btn"
+            (click)="addToCart()"
             [disabled]="!product.inStock">
-            {{ product.inStock ? 'Add to Cart' : 'Out of Stock' }}
+            {{ product.inStock ? 'Agregar al Carrito' : 'Agotado' }}
           </button>
-          <a routerLink="/cart" class="view-cart-btn">View Cart</a>
+          <a routerLink="/cart" class="view-cart-btn">Ver Carrito</a>
         </div>
       </div>
     </div>
   </div>
-  
+
   <div class="added-to-cart-message" *ngIf="showAddedToCartMessage">
     <div class="message-content">
       <span class="message-icon">✓</span>
-      <span class="message-text">{{ product?.name }} added to cart</span>
+      <span class="message-text">{{ product?.name }} agregado al carrito</span>
     </div>
   </div>
 </div>
