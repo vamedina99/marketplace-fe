@@ -93,7 +93,7 @@ export class CheckoutComponent implements OnInit {
 
     const customerInfo: CustomerInfo = this.customerForm.value;
     const paymentInfo: PaymentInfo = this.paymentForm.value;
-    console.log(customerInfo, paymentInfo);
+
     const order: Order = {
       amount: this.cartTotal,
       type: 'payment',
@@ -113,14 +113,19 @@ export class CheckoutComponent implements OnInit {
       payment: paymentInfo
     };
 
-    console.log('order', order)
-
-    this.orderService.createOrder(order).subscribe(createdOrder => {
-      console.log('createdOrder',createdOrder);
-      // this.cartService.clearCart();
-      // this.router.navigate(['/order-confirmation'], {
-      //   state: { orderId: createdOrder.id }
-      // });
+    this.orderService.createOrder(order).subscribe({
+      next: (createdOrder) => {
+        console.log('Order created:', createdOrder);
+        this.cartService.clearCart();
+        this.router.navigate(['/order-confirmation'], {
+          state: { orderId: createdOrder.id }
+        });
+      },
+      error: (error) => {
+        console.error('Error creating order:', error);
+        this.isSubmitting = false;
+        // Aquí podrías mostrar un mensaje de error al usuario
+      }
     });
   }
 

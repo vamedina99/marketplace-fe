@@ -25,24 +25,27 @@ export class OrderService {
     order.date = new Date();
     order.status = 'pending';
 
+    // Save order locally
     this.orders.push(order);
     localStorage.setItem('orders', JSON.stringify(this.orders));
 
-    const newOrder = {
+    // Prepare order data for API
+    const orderToSend: OrderToSend = {
       amount: order.amount,
       type: order.type,
       description: order.description,
       userId: order.userId,
-      userIp:order.userIp,
+      userIp: order.userIp,
       sourceAccount: order.sourceAccount,
       destinationAccount: order.destinationAccount,
       status: order.status,
       referenceNumber: order.referenceNumber,
       paymentMethod: order.paymentMethod,
       currency: order.currency
-    }
-    console.log('newOrder', newOrder)
-    return this.http.post<Order>(`${this.apiUrl}/transactions`, newOrder);
+    };
+
+    // Send to API
+    return this.http.post<Order>(`${this.apiUrl}/transactions`, orderToSend);
   }
 
   getOrders(): Observable<Order[]> {
