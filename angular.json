@@ -14,7 +14,9 @@
               "extractLicenses": false,
               "namedChunks": true,
               "optimization": false,
-              "sourceMap": true
+              "sourceMap": true,
+              // 👇 Agregar si usas baseHref solo en dev
+              "baseHref": "./"
             },
             "production": {
               "aot": true,
@@ -22,7 +24,9 @@
               "namedChunks": false,
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false
+              "sourceMap": false,
+              // ✅ ESTA ES LA CLAVE
+              "baseHref": "./"
             }
           },
           "options": {
