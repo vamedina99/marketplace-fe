@@ -11,6 +11,7 @@ import { CustomerInfo, Order, OrderToSend, PaymentInfo } from '../../models/orde
   selector: 'app-checkout',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
+  providers: [OrderService],
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css']
 })
