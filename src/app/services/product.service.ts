@@ -9,95 +9,97 @@ export class ProductService {
   private products: Product[] = [
     {
       id: 1,
-      name: 'Audífonos Inalámbricos',
-      description: 'Audífonos premium con cancelación de ruido y 30 horas de batería.',
-      price: 899900,
-      imageUrl: 'https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      category: 'Electrónicos',
+      name: 'Caja de Frutas Frescas',
+      description: 'Caja con frutas frescas rescatadas de excedentes agrícolas locales. Variedad según temporada.',
+      price: 25000,
+      imageUrl: 'https://images.pexels.com/photos/257816/pexels-photo-257816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      category: 'Alimentos',
       inStock: true,
-      rating: 4.8,
-      features: ['Cancelación de ruido', 'Bluetooth 5.0', '30 horas de batería', 'Carga rápida']
+      rating: 4.9,
+      features: ['Frutas de temporada', 'Producto local', 'Frescura garantizada', 'Ideal para snacks saludables']
     },
     {
       id: 2,
-      name: 'Smartphone X',
-      description: 'Último modelo con pantalla OLED de 6.7", capacidad 5G y 128GB de almacenamiento.',
-      price: 3499900,
-      imageUrl: 'https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      category: 'Electrónicos',
+      name: 'Pan Artesanal del Día',
+      description: 'Pan fresco artesanal rescatado de panaderías locales con descuentos para evitar desperdicios.',
+      price: 8000,
+      imageUrl: 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      category: 'Alimentos',
       inStock: true,
       rating: 4.7,
-      features: ['Pantalla OLED 6.7"', 'Compatible 5G', '128GB almacenamiento', 'Resistente al agua']
+      features: ['Pan fresco', 'Artesanal', 'Producto local', 'Descuento especial']
     },
     {
       id: 3,
-      name: 'Tenis para Correr',
-      description: 'Tenis ligeros con amortiguación responsive y parte superior de malla transpirable.',
-      price: 429900,
-      imageUrl: 'https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      category: 'Deportes',
+      name: 'Verduras Orgánicas',
+      description: 'Paquete de verduras orgánicas rescatadas de fincas cercanas, ideales para tus recetas saludables.',
+      price: 18000,
+      imageUrl: 'https://images.pexels.com/photos/5938/food-vegetables-healthy-lunch.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      category: 'Alimentos',
       inStock: true,
-      rating: 4.5,
-      features: ['Diseño ligero', 'Amortiguación responsive', 'Malla transpirable', 'Suela durable']
+      rating: 4.6,
+      features: ['Orgánico', 'Producto local', 'Variedad de verduras', 'Frescas y nutritivas']
     },
     {
       id: 4,
-      name: 'Cafetera Programable',
-      description: 'Cafetera programable con capacidad de 12 tazas y función de auto-apagado.',
-      price: 299900,
-      imageUrl: 'https://images.pexels.com/photos/6312086/pexels-photo-6312086.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      category: 'Hogar',
+      name: 'Café de Origen',
+      description: 'Paquete de café molido de finca colombiana, rescatado antes de su fecha de vencimiento.',
+      price: 12000,
+      imageUrl: 'https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      category: 'Bebidas',
       inStock: true,
-      rating: 4.3,
-      features: ['Capacidad 12 tazas', 'Temporizador programable', 'Auto-apagado', 'Control de intensidad']
+      rating: 4.8,
+      features: ['Café 100% colombiano', 'Molido fresco', 'Sabor intenso', 'Rescatado a tiempo']
     },
     {
       id: 5,
-      name: 'Mochila',
-      description: 'Mochila durable con compartimiento para laptop, bolsillos para botella y correas acolchadas.',
-      price: 189900,
-      imageUrl: 'https://images.pexels.com/photos/2905238/pexels-photo-2905238.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      category: 'Moda',
+      name: 'Jabón Artesanal Natural',
+      description: 'Jabón hecho a mano con ingredientes naturales, rescatado de excedentes de tiendas locales.',
+      price: 9000,
+      imageUrl: 'https://images.pexels.com/photos/3775145/pexels-photo-3775145.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      category: 'Cuidado Personal',
       inStock: true,
-      rating: 4.6,
-      features: ['Compartimiento laptop', 'Bolsillos para botella', 'Correas acolchadas', 'Resistente al agua']
+      rating: 4.5,
+      features: ['Ingredientes naturales', 'Hecho a mano', 'Respetuoso con el medio ambiente', 'Aroma fresco']
     },
     {
       id: 6,
-      name: 'Reloj Inteligente',
-      description: 'Monitor de actividad física con medidor de ritmo cardíaco, GPS y resistencia al agua hasta 50m.',
-      price: 649900,
-      imageUrl: 'https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      category: 'Electrónicos',
+      name: 'Snack Saludable',
+      description: 'Snack saludable con frutos secos y semillas, rescatado de tiendas locales para reducir desperdicios.',
+      price: 7000,
+      imageUrl: 'https://images.pexels.com/photos/5938/food-vegetables-healthy-lunch.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      category: 'Alimentos',
       inStock: false,
-      rating: 4.4,
-      features: ['Monitor cardíaco', 'GPS integrado', 'Resistente al agua', 'Monitor de sueño']
+      rating: 4.3,
+      features: ['Frutos secos', 'Sin aditivos', 'Energía natural', 'Empaque eco-friendly']
     },
     {
       id: 7,
-      name: 'Lámpara de Escritorio',
-      description: 'Lámpara LED con brillo ajustable, temperatura de color y puerto de carga USB.',
-      price: 159900,
-      imageUrl: 'https://images.pexels.com/photos/4769488/pexels-photo-4769488.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      category: 'Hogar',
+      name: 'Botella Reutilizable',
+      description: 'Botella de agua reutilizable, rescatada de excedentes de producción, ideal para uso diario.',
+      price: 35000,
+      imageUrl: 'https://images.pexels.com/photos/4052143/pexels-photo-4052143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      category: 'Hogar y Vida',
       inStock: true,
-      rating: 4.2,
-      features: ['Brillo ajustable', 'Control de temperatura de color', 'Puerto de carga USB', 'Control táctil']
+      rating: 4.6,
+      features: ['Material BPA free', 'Capacidad 750 ml', 'Diseño ergonómico', 'Resistente y duradera']
     },
     {
       id: 8,
-      name: 'Tapete de Yoga',
-      description: 'Tapete antideslizante con líneas de alineación y correa de transporte, ideal para todos los estilos de yoga.',
-      price: 129900,
-      imageUrl: 'https://images.pexels.com/photos/4056529/pexels-photo-4056529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      category: 'Deportes',
+      name: 'Kit de Plantas Aromáticas',
+      description: 'Kit con semillas y macetas para cultivar tus propias plantas aromáticas en casa.',
+      price: 28000,
+      imageUrl: 'https://images.pexels.com/photos/235621/pexels-photo-235621.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      category: 'Hogar y Vida',
       inStock: true,
-      rating: 4.5,
-      features: ['Superficie antideslizante', 'Líneas de alineación', 'Correa de transporte', 'Material ecológico']
+      rating: 4.7,
+      features: ['Semillas orgánicas', 'Macetas incluidas', 'Fácil de cultivar', 'Mejora tu espacio']
     }
   ];
 
-  private categorySubject = new BehaviorSubject<string[]>(['Todos', 'Electrónicos', 'Deportes', 'Hogar', 'Moda']);
+  private categorySubject = new BehaviorSubject<string[]>(['Todos', 'Alimentos', 'Bebidas', 'Cuidado Personal', 'Hogar y Vida']);
+
+
 
   constructor() { }
 
