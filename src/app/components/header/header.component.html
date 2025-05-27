@@ -1,15 +1,15 @@
 <header class="header">
   <div class="header-container">
     <div class="logo" (click)="navigateTo('')">
-      <span class="logo-text">Mi Tienda</span>
+      <span class="logo-text">Última oportunidad</span>
     </div>
-    
+
     <div class="nav-toggle" (click)="toggleNav()">
       <div class="bar" [class.active]="isNavOpen"></div>
       <div class="bar" [class.active]="isNavOpen"></div>
       <div class="bar" [class.active]="isNavOpen"></div>
     </div>
-    
+
     <nav class="nav" [class.open]="isNavOpen">
       <ul class="nav-list">
         <li class="nav-item">
@@ -29,7 +29,7 @@
         </li>
       </ul>
     </nav>
-    
+
     <div class="cart-button" (click)="navigateTo('cart')">
       <span class="cart-icon">🛒</span>
       <span class="cart-badge" *ngIf="(cartCount$ | async)! > 0">{{ cartCount$ | async }}</span>
