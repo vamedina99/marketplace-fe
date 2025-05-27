@@ -117,17 +117,28 @@ export class CheckoutComponent implements OnInit {
     this.orderService.createOrder(order).subscribe({
       next: (response) => {
         console.log('Order created:', response);
+        console.log('order.id', order.id)
         if (response.success) {
+          console.log('Order successful, clearing cart and redirecting...');
           this.cartService.clearCart();
+          console.log('Cart cleared, navigating to confirmation...');
+          const orders = localStorage.getItem('orders');
+          console.log('orders ikporntatne', orders)
           this.router.navigate(['/order-confirmation'], {
             state: { orderId: response.data.id }
+          }).then(() => {
+            console.log('Navigation completed');
+          }).catch(error => {
+            console.error('Navigation error:', error);
           });
+        } else {
+          console.log('Order was not successful:', response.message);
+          this.isSubmitting = false;
         }
       },
       error: (error) => {
         console.error('Error creating order:', error);
         this.isSubmitting = false;
-        // Aquí podrías mostrar un mensaje de error al usuario
       }
     });
   }
