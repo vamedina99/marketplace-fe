@@ -122,10 +122,12 @@ export class CheckoutComponent implements OnInit {
           console.log('Order successful, clearing cart and redirecting...');
           this.cartService.clearCart();
           console.log('Cart cleared, navigating to confirmation...');
-          const orders = localStorage.getItem('orders');
-          console.log('orders ikporntatne', orders)
+          const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+          console.log('orders important', orders);
+          console.log('orders important', orders[0]?.id);
+
           this.router.navigate(['/order-confirmation'], {
-            state: { orderId: response.data.id }
+            state: { orderId: orders[0]?.id }
           }).then(() => {
             console.log('Navigation completed');
           }).catch(error => {
