@@ -1,23 +1,23 @@
 <div class="cart-container animate-fadeIn">
-  <h1 class="page-title">Your Shopping Cart</h1>
-  
+  <h1 class="page-title">Tu cesta</h1>
+
   <div *ngIf="cartItems.length === 0" class="empty-cart">
     <div class="empty-cart-icon">🛒</div>
-    <h2>Your cart is empty</h2>
-    <p>It looks like you haven't added any products to your cart yet.</p>
+    <h2>Tu carrito está vacio</h2>
+    <p>Parece que aún no has añadido ningún producto a tu cesta.</p>
     <a routerLink="/" class="continue-shopping-btn">Continue Shopping</a>
   </div>
-  
+
   <div *ngIf="cartItems.length > 0" class="cart-content">
     <div class="cart-items">
       <div class="cart-header">
-        <div class="header-product">Product</div>
-        <div class="header-price">Price</div>
-        <div class="header-quantity">Quantity</div>
+        <div class="header-product">Producto</div>
+        <div class="header-price">Precio</div>
+        <div class="header-quantity">Cantidad</div>
         <div class="header-total">Total</div>
         <div class="header-actions"></div>
       </div>
-      
+
       <div *ngFor="let item of cartItems" class="cart-item animate-slideInUp">
         <div class="item-product">
           <img [src]="item.product.imageUrl" [alt]="item.product.name" class="item-image">
@@ -26,25 +26,25 @@
             <p class="item-category">{{ item.product.category }}</p>
           </div>
         </div>
-        
+
         <div class="item-price">${{ item.product.price.toFixed(2) }}</div>
-        
+
         <div class="item-quantity">
           <div class="quantity-controls">
             <button class="quantity-btn" (click)="updateQuantity(item, item.quantity - 1)">-</button>
-            <input 
-              type="number" 
-              class="quantity-input" 
-              [value]="item.quantity" 
+            <input
+              type="number"
+              class="quantity-input"
+              [value]="item.quantity"
               (change)="updateQuantity(item, $any($event.target).value)"
               min="1"
             >
             <button class="quantity-btn" (click)="updateQuantity(item, item.quantity + 1)">+</button>
           </div>
         </div>
-        
+
         <div class="item-total">${{ getItemTotal(item).toFixed(2) }}</div>
-        
+
         <div class="item-actions">
           <button class="remove-btn" (click)="removeItem(item.product.id)">
             <span>×</span>
@@ -52,35 +52,35 @@
         </div>
       </div>
     </div>
-    
+
     <div class="cart-summary">
-      <h2 class="summary-title">Order Summary</h2>
-      
+      <h2 class="summary-title">Resumen del Pedido</h2>
+
       <div class="summary-row">
         <span>Subtotal</span>
         <span>${{ cartTotal.toFixed(2) }}</span>
       </div>
-      
+
       <div class="summary-row">
-        <span>Shipping</span>
-        <span>Free</span>
+        <span>Envío</span>
+        <span>Gratis</span>
       </div>
-      
+
       <div class="summary-divider"></div>
-      
+
       <div class="summary-row total">
         <span>Total</span>
         <span>${{ cartTotal.toFixed(2) }}</span>
       </div>
-      
+
       <div class="summary-actions">
-        <a routerLink="/checkout" class="checkout-btn">Proceed to Checkout</a>
-        <button class="clear-cart-btn" (click)="clearCart()">Clear Cart</button>
+        <a routerLink="/checkout" class="checkout-btn">Proceder al Pago</a>
+        <button class="clear-cart-btn" (click)="clearCart()">Vaciar Carrito</button>
       </div>
     </div>
   </div>
-  
+
   <div *ngIf="cartItems.length > 0" class="continue-shopping">
-    <a routerLink="/" class="continue-shopping-link">← Continue Shopping</a>
+    <a routerLink="/" class="continue-shopping-link">← Continuar Comprando</a>
   </div>
 </div>
