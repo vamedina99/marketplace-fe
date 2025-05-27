@@ -24,4 +24,23 @@ export interface Order {
   customer: CustomerInfo;
   payment: PaymentInfo;
   status: 'pending' | 'processing' | 'completed' | 'cancelled';
+  amount: number;
+  type: string;
+  description: string;
+  sourceAccount: string;
+  destinationAccount: string;
+  userId: string;
+  userIp: string;
+  referenceNumber: string;
+  paymentMethod: string;
+  currency: string;
+}
+
+export interface OrderToSend {
+  amount: number;
+  type: string;
+  description: string;
+  sourceAccount: string;
+  destinationAccount: string;
+  status: string;
 }

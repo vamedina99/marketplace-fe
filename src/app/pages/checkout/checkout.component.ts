@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { OrderService } from '../../services/order.service';
 import { CartItem } from '../../models/cart-item.model';
-import { CustomerInfo, Order, PaymentInfo } from '../../models/order.model';
+import { CustomerInfo, Order, OrderToSend, PaymentInfo } from '../../models/order.model';
 
 @Component({
   selector: 'app-checkout',
@@ -17,13 +17,13 @@ import { CustomerInfo, Order, PaymentInfo } from '../../models/order.model';
 export class CheckoutComponent implements OnInit {
   cartItems: CartItem[] = [];
   cartTotal = 0;
-  
+
   customerForm!: FormGroup;
   paymentForm!: FormGroup;
-  
+
   currentStep = 1;
   isSubmitting = false;
-  
+
   constructor(
     private fb: FormBuilder,
     private cartService: CartService,
@@ -43,10 +43,10 @@ export class CheckoutComponent implements OnInit {
         this.router.navigate(['/cart']);
         return;
       }
-      
+
       this.cartItems = items;
     });
-    
+
     this.cartService.getCartTotal().subscribe(total => {
       this.cartTotal = total;
     });
@@ -61,7 +61,7 @@ export class CheckoutComponent implements OnInit {
       postalCode: ['', Validators.required],
       country: ['', Validators.required]
     });
-    
+
     this.paymentForm = this.fb.group({
       cardNumber: ['', [Validators.required, Validators.pattern(/^\d{16}$/)]],
       cardHolder: ['', Validators.required],
@@ -88,26 +88,48 @@ export class CheckoutComponent implements OnInit {
     if (this.customerForm.invalid || this.paymentForm.invalid) {
       return;
     }
-    
+
     this.isSubmitting = true;
-    
+
     const customerInfo: CustomerInfo = this.customerForm.value;
     const paymentInfo: PaymentInfo = this.paymentForm.value;
-    
+    console.log(customerInfo, paymentInfo);
     const order: Order = {
+      amount: this.cartTotal,
+      type: 'payment',
+      description: 'Payment for order',
+      userId: '1234567890',
+      userIp: '12.12.12.12',
+      sourceAccount: '12345',
+      destinationAccount: '67890',
+      status: 'pending',
+      referenceNumber: 'REF123',
+      paymentMethod: 'card',
+      currency: 'COP',
       items: this.cartItems,
       total: this.cartTotal,
       date: new Date(),
       customer: customerInfo,
-      payment: paymentInfo,
-      status: 'pending'
+      payment: paymentInfo
     };
-    
-    this.orderService.createOrder(order).subscribe(createdOrder => {
-      this.cartService.clearCart();
-      this.router.navigate(['/order-confirmation'], { 
-        state: { orderId: createdOrder.id } 
-      });
+
+    const orderToSend: OrderToSend = {
+      amount: this.cartTotal,
+      type: 'payment',
+      description: 'Payment for order',
+      sourceAccount: '12345',
+      destinationAccount: '67890',
+      status: 'pending',
+
+
+    }
+
+    this.orderService.createOrder(orderToSend).subscribe(createdOrder => {
+      console.log('createdOrder',createdOrder);
+      // this.cartService.clearCart();
+      // this.router.navigate(['/order-confirmation'], {
+      //   state: { orderId: createdOrder.id }
+      // });
     });
   }
 

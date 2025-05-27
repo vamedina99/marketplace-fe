@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { Order } from '../models/order.model';
+import { Order, OrderToSend } from '../models/order.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
+  private apiUrl = environment.apiUrl;
   private orders: Order[] = [];
 
-  constructor() {
+  constructor(private http: HttpClient) {
     // Check for orders in localStorage
     const savedOrders = localStorage.getItem('orders');
     if (savedOrders) {
@@ -16,16 +19,8 @@ export class OrderService {
     }
   }
 
-  createOrder(order: Order): Observable<Order> {
-    // Generate a simple order ID
-    order.id = Date.now().toString();
-    order.date = new Date();
-    order.status = 'pending';
-    
-    this.orders.push(order);
-    localStorage.setItem('orders', JSON.stringify(this.orders));
-    
-    return of(order);
+  createOrder(order: OrderToSend): Observable<Order> {
+    return this.http.post<Order>(`${this.apiUrl}/transactions`, order);
   }
 
   getOrders(): Observable<Order[]> {
@@ -39,13 +34,13 @@ export class OrderService {
 
   updateOrderStatus(id: string, status: 'pending' | 'processing' | 'completed' | 'cancelled'): Observable<boolean> {
     const orderIndex = this.orders.findIndex(o => o.id === id);
-    
+
     if (orderIndex !== -1) {
       this.orders[orderIndex].status = status;
       localStorage.setItem('orders', JSON.stringify(this.orders));
       return of(true);
     }
-    
+
     return of(false);
   }
 }
