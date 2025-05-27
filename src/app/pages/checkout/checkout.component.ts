@@ -113,7 +113,7 @@ export class CheckoutComponent implements OnInit {
       payment: paymentInfo
     };
 
-
+    console.log('order', order)
 
     this.orderService.createOrder(order).subscribe(createdOrder => {
       console.log('createdOrder',createdOrder);

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Order, OrderToSend } from '../models/order.model';
 import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class OrderService {
   }
 
   createOrder(order: Order): Observable<Order> {
-        // Generate a simple order ID
+    // Generate a simple order ID
     order.id = Date.now().toString();
     order.date = new Date();
     order.status = 'pending';
