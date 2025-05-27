@@ -1,39 +1,39 @@
 <div class="confirmation-container animate-fadeIn">
   <div class="confirmation-card">
     <div class="confirmation-icon">✓</div>
-    
-    <h1 class="confirmation-title">Order Confirmed!</h1>
-    
+
+    <h1 class="confirmation-title">¡Pedido Confirmado!</h1>
+
     <p class="confirmation-message">
-      Thank you for your purchase. Your order has been confirmed and is now being processed.
+      Gracias por su compra. Su pedido ha sido confirmado y está siendo procesado.
     </p>
-    
+
     <div class="order-details" *ngIf="order">
       <div class="order-info">
         <div class="info-item">
-          <span class="info-label">Order ID:</span>
+          <span class="info-label">ID del Pedido:</span>
           <span class="info-value">{{ order.id }}</span>
         </div>
-        
+
         <div class="info-item">
-          <span class="info-label">Order Date:</span>
+          <span class="info-label">Fecha del Pedido:</span>
           <span class="info-value">{{ getOrderDate() }}</span>
         </div>
-        
+
         <div class="info-item">
-          <span class="info-label">Est. Delivery:</span>
+          <span class="info-label">Entrega Estimada:</span>
           <span class="info-value">{{ getEstimatedDelivery() }}</span>
         </div>
-        
+
         <div class="info-item">
-          <span class="info-label">Order Total:</span>
+          <span class="info-label">Total del Pedido:</span>
           <span class="info-value">${{ order.total.toFixed(2) }}</span>
         </div>
       </div>
-      
+
       <div class="order-items">
-        <h3 class="items-title">Order Items</h3>
-        
+        <h3 class="items-title">Artículos del Pedido</h3>
+
         <div class="items-list">
           <div *ngFor="let item of order.items" class="item">
             <div class="item-info">
@@ -44,29 +44,29 @@
           </div>
         </div>
       </div>
-      
+
       <div class="order-summary">
         <div class="summary-row">
           <span>Subtotal</span>
           <span>${{ order.total.toFixed(2) }}</span>
         </div>
-        
+
         <div class="summary-row">
-          <span>Shipping</span>
-          <span>Free</span>
+          <span>Envío</span>
+          <span>Gratis</span>
         </div>
-        
+
         <div class="summary-divider"></div>
-        
+
         <div class="summary-row total">
           <span>Total</span>
           <span>${{ order.total.toFixed(2) }}</span>
         </div>
       </div>
-      
+
       <div class="shipping-info">
-        <h3 class="shipping-title">Shipping To</h3>
-        
+        <h3 class="shipping-title">Enviar A</h3>
+
         <div class="shipping-address">
           <p>{{ order.customer.name }}</p>
           <p>{{ order.customer.address }}</p>
@@ -75,9 +75,9 @@
         </div>
       </div>
     </div>
-    
+
     <div class="confirmation-actions">
-      <a routerLink="/" class="btn-primary">Continue Shopping</a>
+      <a routerLink="/" class="btn-primary">Continuar Comprando</a>
     </div>
   </div>
 </div>
