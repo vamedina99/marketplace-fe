@@ -115,12 +115,14 @@ export class CheckoutComponent implements OnInit {
     };
 
     this.orderService.createOrder(order).subscribe({
-      next: (createdOrder) => {
-        console.log('Order created:', createdOrder);
-        this.cartService.clearCart();
-        this.router.navigate(['/order-confirmation'], {
-          state: { orderId: createdOrder.id }
-        });
+      next: (response) => {
+        console.log('Order created:', response);
+        if (response.success) {
+          this.cartService.clearCart();
+          this.router.navigate(['/order-confirmation'], {
+            state: { orderId: response.data.id }
+          });
+        }
       },
       error: (error) => {
         console.error('Error creating order:', error);

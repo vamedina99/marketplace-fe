@@ -45,7 +45,13 @@ export interface OrderToSend {
   sourceAccount: string;
   destinationAccount: string;
   status: string;
-  referenceNumber:string;
-  paymentMethod:string;
-  currency: string
+  referenceNumber: string;
+  paymentMethod: string;
+  currency: string;
+}
+
+export interface ApiResponse<T> {
+  success: boolean;
+  data: T;
+  message: string;
 }

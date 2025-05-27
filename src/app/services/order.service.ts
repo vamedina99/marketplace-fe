@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { Order, OrderToSend } from '../models/order.model';
-import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { Order, OrderToSend, ApiResponse } from '../models/order.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class OrderService {
     }
   }
 
-  createOrder(order: Order): Observable<Order> {
+  createOrder(order: Order): Observable<ApiResponse<Order>> {
     // Generate a simple order ID
     order.id = Date.now().toString();
     order.date = new Date();
@@ -45,7 +45,7 @@ export class OrderService {
     };
 
     // Send to API
-    return this.http.post<Order>(`${this.apiUrl}/transactions`, orderToSend);
+    return this.http.post<ApiResponse<Order>>(`${this.apiUrl}/transactions`, orderToSend);
   }
 
   getOrders(): Observable<Order[]> {
